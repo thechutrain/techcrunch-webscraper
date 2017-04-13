@@ -13,9 +13,13 @@ require('./models').connect(process.env.MONGODB_URI)
 // app.use(morgan('combined'))
 app.use(morgan('dev'))
 
+// Middleware ------------------------- /
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 // Router ------------------------- /
 app.use('/test', require('./controller/test-router'))
-app.use('/api', require('./controller/router'))
+app.use('/api', require('./controller/apiRouter'))
 
 // Start Server ------------------------- /
 app.listen(PORT, () => {
