@@ -3,8 +3,11 @@ const Schema = mongoose.Schema
 
 // 1. Create user schema
 const articleSchema= new Schema({
-  title: { type: String, required: true }
-  
+  title: { type: String, required: true, unique: true },
+  published_timestamp: { type: Date, required: true },
+  excerpt: String,
+  article_link: String,
+  img_link: String,
 })
 
 // 2. create reference to model

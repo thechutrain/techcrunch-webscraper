@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 module.exports.connect = (uri) => {
-  mongoose.Promise = Promise
+  mongoose.Promise = global.Promise
   const options = {}
   mongoose.connect(uri, options, function(err) {
     if (err) { 
@@ -13,6 +13,6 @@ module.exports.connect = (uri) => {
   })
 
   // load models
-  require('./user')
+  // require('./user')
   require('./article')
 }

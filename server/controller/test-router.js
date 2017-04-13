@@ -1,14 +1,16 @@
 'use strict'
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
+const Article = require('../models/article')
+const scrape = require('../webScrapper')
 
 router.get('/', (req, res) => {
-  res.json({ test: true })
+  scrape()
+  res.send('done')
 })
 
 router.get('/findAll', (req, res) => {
-  User.find({}, function(err, users) {
+  Article.find({}, function(err, users) {
     if (err) throw err
     res.json(users)
   })
