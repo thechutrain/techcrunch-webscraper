@@ -1,5 +1,14 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.MONGODB_URI)
-
-console.log(process.env.MONGODB_URI)
+module.exports.connect = (uri) => {
+  mongoose.Promise = Promise
+  const options = {}
+  mongoose.connect(uri, options, function(err) {
+    if (err) { 
+      console.log(err)
+      process.exit(1)
+    } else {
+      console.log(`Successfully connected to db @ "${uri}"`)
+    }
+  })
+}
