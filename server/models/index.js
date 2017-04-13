@@ -11,4 +11,7 @@ module.exports.connect = (uri) => {
       console.log(`Successfully connected to db @ "${uri}"`)
     }
   })
+
+  // load models
+  require('./user')
 }
