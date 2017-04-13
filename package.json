@@ -1,0 +1,34 @@
+{
+  "name": "tech-crunch-scraper",
+  "version": "1.0.0",
+  "description": "webscraper of tech crunch news",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thechutrain/techcrunch-webscraper.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongoose",
+    "cheerio",
+    "express",
+    "node"
+  ],
+  "author": "Alan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thechutrain/techcrunch-webscraper/issues"
+  },
+  "homepage": "https://github.com/thechutrain/techcrunch-webscraper#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.4",
+    "morgan": "^1.8.1"
+  }
+}
