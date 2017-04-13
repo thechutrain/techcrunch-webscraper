@@ -7,10 +7,15 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 // require models
-console.log(process.env.MONGODB_URI)
 require('./models').connect(process.env.MONGODB_URI)
 
 // Logger ------------------------- /
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
+app.use(morgan('dev'))
+
+// Start Server ------------------------- /
+app.listen(PORT, () => {
+  console.log(`App is running on local host port: ${PORT}`)
+})
 
 module.exports = app
