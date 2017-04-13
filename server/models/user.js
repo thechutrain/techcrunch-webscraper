@@ -5,8 +5,8 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  created_at: Date,
-  updated_at: Date
+  // created_at: Date,
+  // updated_at: Date
 })
 
 // 2. create reference to model

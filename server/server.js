@@ -14,8 +14,8 @@ require('./models').connect(process.env.MONGODB_URI)
 app.use(morgan('dev'))
 
 // Router ------------------------- /
-const apiRouter = require('./controller/router')
-app.use('/api', apiRouter)
+app.use('/test', require('./controller/test-router'))
+app.use('/api', require('./controller/router'))
 
 // Start Server ------------------------- /
 app.listen(PORT, () => {
