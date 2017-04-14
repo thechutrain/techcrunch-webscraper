@@ -8,6 +8,12 @@ const articleSchema= new Schema({
   excerpt: String,
   article_link: String,
   img_link: String,
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ]
 })
 
 // 2. create reference to model
