@@ -3,12 +3,12 @@ const cheerio = require('cheerio')
 const Article = require('../models/article')
 
 // 1. make a request to url w. axios
-function makeRequest(input_uri) {
+function makeRequest(input_uri, done_cb) {
   const uri = input_uri || 'https://techcrunch.com/'
   axios.get(uri)
     .then(function(response) {
       // console.log(typeof response.data)
-      processHTML(response.data, saveArticle)
+      processHTML(response.data, saveArticle, done_cb)
     })
     .catch(function(axios_err) {
       console.log(axios_err)
@@ -19,7 +19,7 @@ function makeRequest(input_uri) {
 // makeRequest()
 
 // 2. get the important web page content
-function processHTML (rawHTML, callback) {
+function processHTML (rawHTML, callback, done_cb) {
   const articles_array = []
   const $ = cheerio.load(rawHTML)
   $('ul#river1 li.river-block').each((index, value) => {
@@ -42,11 +42,11 @@ function processHTML (rawHTML, callback) {
     articles_array.push(articleData)
   })
   // console.log(articles_array)
-  callback(articles_array)
+  callback(articles_array, done_cb)
 }
 
 // 3. save each article into the mongo database
-function saveArticle(data) {
+function saveArticle(data, done_cb) {
   data.forEach((article_obj) => {
     // console.log(article_obj)
     let article = new Article(article_obj)
@@ -61,6 +61,7 @@ function saveArticle(data) {
       console.log('===================')
     }
   })
+  done_cb()
 }
 
 module.exports = makeRequest

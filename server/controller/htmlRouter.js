@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const Article = require('../models/article')
+const update = require('../webScrapper')
 
 router.get('/', (req, res) => {
   // 1. Get all the articles and sent that to the homepage
@@ -22,6 +23,12 @@ router.get('/article/:id', (req, res) => {
     console.log(article)
     res.render('article', article)
   })
-  
+})
+
+router.get('/update', (req, res) => {
+  update(null, function() {
+    // successfully updated!
+    res.json({ okay: true })
+  })
 })
 module.exports = router
