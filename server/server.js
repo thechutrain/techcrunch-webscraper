@@ -26,7 +26,6 @@ app.engine('handlebars', exphbs({
 
 // Router ------------------------- /
 app.use('/', require('./controller/htmlRouter'))
-app.use('/test', require('./controller/test-router'))
 app.use('/api', require('./controller/apiRouter'))
 
 // Start Server ------------------------- /

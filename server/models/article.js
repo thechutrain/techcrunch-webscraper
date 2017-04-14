@@ -7,7 +7,7 @@ const articleSchema= new Schema({
   published_timestamp: { type: Date, required: true },
   excerpt: String,
   article_link: String,
-  img_link: String,
+  img_url: String,
   comments: [
     {
       type: Schema.Types.ObjectId,

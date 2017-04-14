@@ -3,6 +3,12 @@ const express = require('express')
 const router = express.Router()
 const Article = require('../models/article')
 const Comment = require('../models/comment')
+const update = require('../webScrapper')
+
+router.get('/update', (req, res) => {
+  update()
+  res.send('okay')
+})
 
 router.get('/article', (req, res) => {
   Article.find({}, (err, queryResult) => {
@@ -50,26 +56,5 @@ router.post('/article/:id/new-comment', (req, res) => {
   })
 })
 
-// router.get('/', (req, res) => {
-//   // 1. create user
-//   const alan = new User({
-//     username: 'alan',
-//     password: 'secret'
-//   })
-//   // 2.save Alan
-//   alan.save((err) => {
-//     if (err) throw err
-//     console.log('User was saved')
-//   })
-
-//   res.json({ test: true })
-// })
-
-// router.get('/findAll', (req, res) => {
-//   User.find({}, function(err, users) {
-//     if (err) throw err
-//     res.json(users)
-//   })
-// })
 
 module.exports = router

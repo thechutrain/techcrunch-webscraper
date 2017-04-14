@@ -1,2 +1,27 @@
 <h1> home handlebars </h1>
-<p>{{ msg }}</p>
+{{!--<p>{{ msg }}</p>--}}
+<div class="row">
+<div class="col-sm-12">
+  <ul class="media-list">
+  {{#each articles_array}}
+    <div class="row">
+      <li class="media">
+        <div class="col-sm-4">
+          <div class="media-left">
+            <img src="{{img_url}}" alt="" class="media-object img-responsive">
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="media-body">
+            <h4 class="media-heading">{{ title }}</h4>
+            <p>{{ excerpt }}</p>
+            <a href="/article/{{_id}}"> Read more here </a>
+          </div>
+        </div>
+      </li>
+    </div>
+  {{/each}}
+</ul>
+
+</div>
+</div>
