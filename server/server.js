@@ -11,19 +11,17 @@ const app = express()
 // require models
 require('./models').connect(process.env.MONGODB_URI)
 
-
 // Middleware ------------------------- /
 // app.use(morgan('combined'))
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-// set handlebars
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'handlebars')
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   layoutsDir: path.join(__dirname, '/views/layouts'),
-  partialsDir: path.join(__dirname, '/views/layouts')
+  partialsDir: path.join(__dirname, '/views/partials')
 }))
 
 // Router ------------------------- /
